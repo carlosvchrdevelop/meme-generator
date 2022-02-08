@@ -9,7 +9,16 @@ class TemplatesProvider extends ChangeNotifier {
 
   TextEditingController searchController = TextEditingController();
   List<Meme> memeDataList = [];
-  String filter = "";
+  String _filter = "";
+
+  void setFilter() {
+    _filter = searchController.text;
+    notifyListeners();
+  }
+
+  String getFilter() {
+    return _filter;
+  }
 
   TemplatesProvider() {
     getOnDisplayTemplates();
