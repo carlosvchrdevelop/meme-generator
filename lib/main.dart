@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_meme_generator/infinite_scroll_view.dart';
+import 'package:flutter_meme_generator/widgets/infinite_scroll_view.dart';
 import 'package:flutter_meme_generator/providers/templates_provider.dart';
+import 'package:flutter_meme_generator/widgets/custom_search_bar.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -34,21 +35,8 @@ class MyApp extends StatelessWidget {
       title: 'Meme generator',
       home: Scaffold(
           appBar: AppBar(
-            title: Container(
-              width: double.infinity,
-              height: 40,
-              decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(500)),
-                  color: Colors.white),
-              child: const Center(
-                child: TextField(
-                  decoration: InputDecoration(
-                      hintText: 'Search for something',
-                      prefixIcon: Icon(Icons.search)),
-                ),
-              ),
-            ),
-          ),
+              title: const CustomSearchBar(),
+              backgroundColor: TemplatesProvider.appColor),
           body: const Center(child: InfiniteScrollView())),
     );
   }

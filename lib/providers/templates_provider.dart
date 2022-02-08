@@ -4,6 +4,10 @@ import 'package:http/http.dart' as http;
 import '../models/template_response.dart';
 
 class TemplatesProvider extends ChangeNotifier {
+  static const appColor = Colors.amber;
+  static const appColorDark = Color.fromRGBO(199, 146, 0, 1);
+
+  TextEditingController searchController = TextEditingController();
   List<Meme> memeDataList = [];
   String filter = "";
 

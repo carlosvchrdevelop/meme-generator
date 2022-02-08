@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_meme_generator/screens/edit_meme_screen.dart';
 
 class CustomTile extends StatelessWidget {
   final String src;
@@ -9,13 +10,15 @@ class CustomTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final route = MaterialPageRoute(
+        builder: (context) => EditMemeScreen(src: src, name: title));
     final tileSize = MediaQuery.of(context).size.width / 2 - 28;
 
     return SizedBox(
       height: tileSize,
       child: Card(
         child: InkWell(
-          onTap: () => {},
+          onTap: () => {Navigator.push(context, route)},
           child: Row(children: [
             SizedBox(
                 width: tileSize,
