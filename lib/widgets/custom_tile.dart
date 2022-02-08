@@ -10,15 +10,18 @@ class CustomTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final route = MaterialPageRoute(
-        builder: (context) => EditMemeScreen(src: src, name: title));
+    getRoute() {
+      return MaterialPageRoute(
+          builder: (context) => EditMemeScreen(src: src, name: title));
+    }
+
     final tileSize = MediaQuery.of(context).size.width / 2 - 28;
 
     return SizedBox(
       height: tileSize,
       child: Card(
         child: InkWell(
-          onTap: () => {Navigator.push(context, route)},
+          onTap: () => {Navigator.push(context, getRoute())},
           child: Row(children: [
             SizedBox(
                 width: tileSize,
