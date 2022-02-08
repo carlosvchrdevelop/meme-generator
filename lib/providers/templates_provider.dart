@@ -30,5 +30,6 @@ class TemplatesProvider extends ChangeNotifier {
     final response = await http.get(url);
     final decodedData = TemplateResponse.fromJson(response.body);
     memeDataList = decodedData.data.memes;
+    notifyListeners();
   }
 }
