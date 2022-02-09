@@ -1,5 +1,11 @@
+import 'dart:io';
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_meme_generator/providers/templates_provider.dart';
+import 'package:gallery_saver/gallery_saver.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:sticker_view/stickerview.dart';
 
 class MemeEditorToolbox extends StatelessWidget {
   const MemeEditorToolbox({Key? key}) : super(key: key);
@@ -28,7 +34,19 @@ class MemeEditorToolbox extends StatelessWidget {
               ),
               MemeEditorButton(
                 icon: Icons.save_alt_sharp,
-                onTap: () {},
+                onTap: () async {
+                  Uint8List? imageData =
+                      await StickerView.saveAsUint8List(ImageQuality.high);
+                  if (imageData != null) {
+                    var imageName =
+                        DateTime.now().microsecondsSinceEpoch.toString();
+                    var appDocDir = await getApplicationDocumentsDirectory();
+                    String imagePath = appDocDir.path + imageName + '.png';
+                    File imageFile = File(imagePath);
+                    imageFile.writeAsBytesSync(imageData);
+                    GallerySaver.saveImage(imagePath);
+                  }
+                },
               ),
             ],
           ),

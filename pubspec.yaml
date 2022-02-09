@@ -31,6 +31,12 @@ dependencies:
     sdk: flutter
   http: ^0.13.4
   provider: ^6.0.2
+  path_provider: ^2.0.8
+  sticker_view:
+    git: 
+      url: https://github.com/carlosvchrdevelop/sticker_view.git
+  gallery_saver: ^2.3.2
+  bordered_text: ^2.0.0
 
 
   # The following adds the Cupertino Icons font to your application.

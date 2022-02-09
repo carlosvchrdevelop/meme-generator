@@ -25,7 +25,9 @@ class InfiniteScrollView extends StatelessWidget {
           return ListTile(
               title: CustomTile(
                   src: filteredList[index].url,
-                  title: filteredList[index].name));
+                  title: filteredList[index].name,
+                  width: filteredList[index].width,
+                  height: filteredList[index].height));
         },
         itemCount: filteredList.length);
   }
