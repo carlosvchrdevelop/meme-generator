@@ -12,6 +12,15 @@ import 'package:sticker_view/stickerview.dart';
 class MemeEditorToolbox extends StatelessWidget {
   const MemeEditorToolbox({Key? key}) : super(key: key);
 
+  final SnackBar _savedImageSnack = const SnackBar(
+    content: Text(
+      'Saved into your gallery',
+      textAlign: TextAlign.center,
+      style: TextStyle(fontSize: 16),
+    ),
+    duration: Duration(seconds: 1),
+  );
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<TemplatesProvider>(context);
@@ -53,6 +62,7 @@ class MemeEditorToolbox extends StatelessWidget {
               MemeEditorButton(
                 icon: Icons.save_alt_sharp,
                 onTap: () async {
+                  ScaffoldMessenger.of(context).showSnackBar(_savedImageSnack);
                   Uint8List? imageData =
                       await StickerView.saveAsUint8List(ImageQuality.high);
                   if (imageData != null) {
