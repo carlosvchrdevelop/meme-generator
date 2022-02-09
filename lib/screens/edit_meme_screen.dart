@@ -1,7 +1,7 @@
-import 'package:bordered_text/bordered_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meme_generator/providers/templates_provider.dart';
 import 'package:flutter_meme_generator/widgets/meme_editor_toolbox.dart';
+import 'package:provider/provider.dart';
 import 'package:sticker_view/stickerview.dart';
 
 class EditMemeScreen extends StatelessWidget {
@@ -20,6 +20,7 @@ class EditMemeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<TemplatesProvider>(context);
     final double aspectRatio = width / height;
     return Scaffold(
         appBar: AppBar(
@@ -36,22 +37,7 @@ class EditMemeScreen extends StatelessWidget {
                       backgroundImage: Image.network(src),
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.width / aspectRatio,
-                      stickerList: [
-                    Sticker(
-                        child: BorderedText(
-                            strokeWidth: 4.0,
-                            child: const Text(
-                              'Text',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 50,
-                                decoration: TextDecoration.none,
-                                decorationColor: Colors.black,
-                              ),
-                            )),
-                        id: 'aa11aa11aa11',
-                        isText: true),
-                  ])),
+                      stickerList: provider.stickers)),
               const MemeEditorToolbox()
             ],
           ),
